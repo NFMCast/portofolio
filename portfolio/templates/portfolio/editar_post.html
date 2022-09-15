@@ -1,0 +1,15 @@
+{% extends 'portfolio/layout.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <h1>Editar Post</h1>
+    <form action="{% url 'portfolio:editar_post' post_id %}" method="POST" class="formulario" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Gravar" class="btn btn-success">
+        <a href="{% url 'portfolio:blog' %}" class="btn btn-danger">Cancelar</a>
+        <a href="{% url 'portfolio:apagar_post' post_id %}" class="btn btn-danger">Apagar</a>
+    </form>
+</div>
+{% endblock %}

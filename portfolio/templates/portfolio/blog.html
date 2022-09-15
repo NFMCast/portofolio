@@ -1,0 +1,29 @@
+<!-- blog.html -->
+
+{% extends 'portfolio/layout.html' %}
+
+{% block main %}
+
+{% load static %}
+<div class="container">
+    <h1>Blog</h1>
+    {% for post in posts %}
+    <article>
+        <div>
+            <h3>{{post.autor}}</h3>
+            <br>
+            <p>{{post.titulo}} ({{post.data}})</p>
+            <br>
+            <p>{{post.descricao}}</p>
+            <br>
+            <button class="btn btn-default"><a href="{% url 'portfolio:editar_post' post.id %}">Editar</a></button>
+            <br>
+        </div>
+    </article>
+    {% endfor %}
+    <div>
+        <button class="btn btn-default"><a href="{% url 'portfolio:novo_post' %}">Adicionar Post</a>
+        </button>
+    </div>
+</div>
+{% endblock %}
